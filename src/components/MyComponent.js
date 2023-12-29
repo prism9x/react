@@ -11,9 +11,9 @@ class MyComponent extends React.Component {
     render() {
         return (
             <div>
-                My name is: {this.state.name}
-                My age: {this.state.age}
-                My address: {this.state.address}
+                <p>My name is: {this.state.name}</p>
+                <p>My age: {this.state.age}</p>
+                <p>My address: {this.state.address}</p>
             </div>
         );
     }
