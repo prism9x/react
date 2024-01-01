@@ -19,13 +19,13 @@ class DisplayInfor extends React.Component {
         return (
             <div className="display-infor-container">
                 <img src={logo} ></img>
-                <div>
+                <>
                     <span onClick={() => { this.handleShowHide() }}>
                         {this.state.isShowListUser === true ? "Hide list user" : "Hide List User"}
                     </span>
-                </div>
+                </>
                 {this.state.isShowListUser &&
-                    <div>
+                    <>
                         {
                             listUsers.map((item, index) => {
                                 return (
@@ -37,7 +37,7 @@ class DisplayInfor extends React.Component {
                                 )
                             })
                         }
-                    </div>
+                    </>
                 }
             </div>
         )

@@ -30,11 +30,9 @@ class MyComponent extends React.Component {
     }
 
     render() {
-        const myInfor = ['ab', 'c', 'd']
-
-
         return (
-            <div>
+            // fragment
+            <>
                 <AddUserInfor
                     handleAddNewUser={this.handleAddNewUser}
                 />
@@ -42,7 +40,7 @@ class MyComponent extends React.Component {
                     listUsers={this.state.listUsers}
 
                 />
-            </div >
+            </>
         );
     }
 }
