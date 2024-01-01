@@ -33,6 +33,9 @@ class DisplayInfor extends React.Component {
                                         <div>My name is {item.name}</div>
                                         <div>My age is {item.age}</div>
                                         <hr></hr>
+                                        <div>
+                                            <span><button onClick={() => { this.props.handleDeleteUser(item.id) }}>Delete</button></span>
+                                        </div>
                                     </div>
                                 )
                             })
