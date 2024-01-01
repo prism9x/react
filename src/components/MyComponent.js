@@ -30,9 +30,18 @@ class MyComponent extends React.Component {
     }
 
     render() {
+        // khong the in bien obj ra ngoai duoc
+        const test = { name: 'demo', age: 25 };
+        const test2 = true;
         return (
             // fragment
             <>
+                {/* convert sang json moi in duoc */}
+                {JSON.stringify(test)}
+                {/* in bien boolean thi khong render ra gi */}
+                {test2}
+
+
                 <AddUserInfor
                     handleAddNewUser={this.handleAddNewUser}
                 />
