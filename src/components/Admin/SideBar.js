@@ -11,6 +11,7 @@ import {
 
 import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
+import { DiReact } from "react-icons/di";
 
 
 const SideBar = (props) => {
@@ -37,7 +38,8 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        Prism9x
+                        <DiReact size={'3em'} color="red" />
+                        <span>Prism9x</span>
                     </div>
                 </SidebarHeader>
 
@@ -47,18 +49,19 @@ const SideBar = (props) => {
                             icon={<FaTachometerAlt />}
                             suffix={<span className="badge red">New</span>}
                         >
-                            dashboard
+                            Dashboard
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components </MenuItem>
+                        {/* <MenuItem icon={<FaGem />}> components </MenuItem> */}
                     </Menu>
                     <Menu iconShape="circle">
-                        <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
+
+                        <SubMenu title={'Features'}
+                            suffix={<span className="badge yellow"></span>}
                             icon={<FaRegLaughWink />}
                         >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+                            <MenuItem> Quản lý User</MenuItem>
+                            <MenuItem> Quản lý bài Quiz</MenuItem>
+                            <MenuItem> Quản lý câu hỏi</MenuItem>
                         </SubMenu>
 
                     </Menu>
