@@ -11,8 +11,9 @@ const ManageUser = (props) => {
                     <button>Add new users</button>
                 </div>
                 <div>
-                    <ModalCreateUser />
+
                 </div>
+                <ModalCreateUser />
             </div>
         </div>
     )
