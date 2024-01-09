@@ -2,13 +2,24 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ManageUser.scss';
-import { FcPlus } from "react-icons/fc";
+import { FcPlus, FcRotateToLandscape } from "react-icons/fc";
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const ModalCreateUser = (props) => {
-    const [show, setShow] = useState(false);
+    const { show, setShow } = props;
+    // const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false)
+        setEmail('')
+        setPassword('')
+        setUsername('')
+        setRole('USER')
+        setImage('')
+        setPreviewImages('')
+    }
 
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
@@ -28,11 +39,60 @@ const ModalCreateUser = (props) => {
 
     }
 
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+    const handSubmitCreateUser = async () => {
+
+        //validate date
+        const isValidEmail = validateEmail(email);
+        if (!isValidEmail) {
+            // alert('invalid email');
+            toast.error('Invalid Email');
+            // toast.success('Successful');
+            // toast.info('Infor');
+            return;
+        }
+
+        if (!password) {
+            toast.error('Invalid Password');
+            return;
+        }
+
+
+
+        // using axios send data to back-end
+        const data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('userImage', image);
+
+        // call API add user
+        let res = await axios.post('http://localhost:8081/api/v1/participant', data)
+        console.log('>>> check axios')
+        if (res.data && res.data.EC === 0) {
+            toast.success(res.data.EM);
+            handleClose();
+        }
+
+        if (res.data && res.data.EC !== 0) {
+            toast.info(res.data.EM);
+            return;
+        }
+    }
+
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            {/* <Button variant="primary" onClick={handleShow}>
                 Create user
-            </Button>
+            </Button> */}
 
             <Modal
                 show={show}
@@ -103,7 +163,7 @@ const ModalCreateUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Add
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handSubmitCreateUser}>
                         Save
                     </Button>
                 </Modal.Footer>

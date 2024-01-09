@@ -1,3 +1,27 @@
+.manage-user-container {
+    padding: 10px;
+
+    .title {
+        font-weight: 600;
+        font-size  : 20px;
+
+    }
+
+    .user-content {
+        .btn-add-new {
+            margin: 15px 0;
+
+            .btn {
+                display    : flex;
+                align-items: center;
+                gap        : 5px;
+            }
+        }
+
+    }
+}
+
+
 .modal-add-user {
     .img-preview {
         border         : 1px dashed red;

@@ -1,19 +1,31 @@
+import { useState } from "react";
 import ModalCreateUser from "./ModalCreateUser";
+import { FcPlus } from "react-icons/fc";
+
 
 const ManageUser = (props) => {
+
+    const [showModalCreateUser, setShowModalCreateUser] = useState(false);
+
     return (
-        <div classNameName="manage-user-container">
-            <div classNameName="title">
+        <div className="manage-user-container">
+            <div className="title">
                 ManageUser
             </div>
-            <div classNameName="user-content">
-                <div>
-                    <button>Add new users</button>
+            <div className="user-content">
+                <div className="btn-add-new">
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => setShowModalCreateUser(true)}
+                    ><FcPlus />Add new user</button>
                 </div>
                 <div>
 
                 </div>
-                <ModalCreateUser />
+                <ModalCreateUser
+                    show={showModalCreateUser}
+                    setShow={setShowModalCreateUser}
+                />
             </div>
         </div>
     )
